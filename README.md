@@ -1,9 +1,5 @@
 # One-Wire Bus
-[![Build Status](https://travis-ci.org/fuchsnj/one-wire-bus.svg?branch=master)](https://travis-ci.org/fuchsnj/one-wire-bus)
-[![crates.io](https://img.shields.io/crates/v/one-wire-bus.svg)](https://crates.io/crates/one-wire-bus)
-[![API](https://docs.rs/one-wire-bus/badge.svg)](https://docs.rs/one-wire-bus)
-
-A Rust implementation of the [1-Wire](https://en.wikipedia.org/wiki/1-Wire) protocol for [embedded-hal](https://github.com/rust-embedded/embedded-hal)
+A Rust implementation of the [1-Wire](https://en.wikipedia.org/wiki/1-Wire) protocol for [embedded-hal](https://github.com/rust-embedded/embedded-hal) 1.1.0
 
 
 ## Quick Start
@@ -22,8 +18,13 @@ use embedded_hal::digital::v2::{InputPin, OutputPin};
 use core::fmt::{Debug, Write};
 use one_wire_bus::OneWire;
 
+use embedded_hal::delay::DelayNs;
+use embedded_hal::digital::{InputPin, OutputPin};
+use core::fmt::{Debug, Write};
+use one_wire_bus_2::OneWire;
+
 fn find_devices<P, E>(
-    delay: &mut impl DelayUs<u16>,
+    delay: &mut impl DelayNs,
     tx: &mut impl Write,
     one_wire_pin: P,
 )
@@ -43,6 +44,7 @@ fn find_devices<P, E>(
                  device_address, device_address.family_code()).unwrap();
     }
 }
+
 ```
 
 Example Output
