@@ -9,15 +9,10 @@ results and handle them appropriately.
 The 1-wire bus requires a single digital pin that is configured as an
 open-drain output (it's either open, or connected to ground), and the bus
 should have a ~5K Ohm pull-up resistor connected. How you obtain this pin from your
-specific device is up the the embedded-hal implementation for that device, but it must
+specific device is up to the embedded-hal implementation for that device, but it must
 implement both `InputPin` and `OutputPin` 
 
 ```rust
-use embedded_hal::blocking::delay::DelayUs;
-use embedded_hal::digital::v2::{InputPin, OutputPin};
-use core::fmt::{Debug, Write};
-use one_wire_bus::OneWire;
-
 use embedded_hal::delay::DelayNs;
 use embedded_hal::digital::{InputPin, OutputPin};
 use core::fmt::{Debug, Write};
